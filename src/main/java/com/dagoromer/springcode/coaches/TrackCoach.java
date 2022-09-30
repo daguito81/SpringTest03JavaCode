@@ -4,6 +4,7 @@ import com.dagoromer.springcode.utils.FortuneService;
 import com.dagoromer.springcode.utils.MessageService;
 import com.dagoromer.springcode.utils.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -33,9 +34,9 @@ public class TrackCoach implements Coach {
     }
 
     @Autowired
-    public TrackCoach(WorkoutService workoutService,
-                      MessageService messageService,
-                      FortuneService fortuneService) {
+    public TrackCoach(@Qualifier("staticWorkoutService") WorkoutService workoutService,
+                      @Qualifier("staticMessageService") MessageService messageService,
+                      @Qualifier("staticFortuneService") FortuneService fortuneService) {
         this.workoutService = workoutService;
         this.fortuneService = fortuneService;
         this.messageService = messageService;
