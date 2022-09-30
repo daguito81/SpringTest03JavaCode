@@ -1,8 +1,9 @@
-package com.dagoromer.springcode.config;
+package com.dagoromer.springcode;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import javax.annotation.PostConstruct;
 import java.util.logging.ConsoleHandler;
@@ -10,17 +11,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-@Component
+@Configuration
+@PropertySource("classpath:logger.properties")
 public class MyLoggerConfig {
     private String rootLoggerLevel;
     private String printedLoggerLevel;
 
-    @Value("FINE")
+    @Value("${logger.root.level}")
     public void setRootLoggerLevel(String rootLoggerLevel) {
         this.rootLoggerLevel = rootLoggerLevel;
     }
 
-    @Value("FINE")
+    @Value("${logger.printed.level}")
     public void setPrintedLoggerLevel(String printedLoggerLevel) {
         this.printedLoggerLevel = printedLoggerLevel;
     }

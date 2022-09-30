@@ -9,6 +9,9 @@ public class MainApp {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(SportConfig.class);
         Coach theCoach = context.getBean("trackCoach", Coach.class);
+        System.out.println(theCoach.getDailyWorkout());
+        System.out.println(theCoach.getDailyFortune());
+        System.out.println(theCoach.getRandomMessage());
         System.out.println(theCoach);
     }
 }
